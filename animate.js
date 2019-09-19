@@ -38,12 +38,22 @@ function handleShipAnimation() {
 }
 
 function RenderNewObject(context) {
-  // Draw a new item here using the canvas 'context' variable
+  context.fillRect(NEW_OBJECT.x, NEW_OBJECT.y, 25, 25);
 }
 
 function HandleNewObjectMovement() {
-  //NEW_OBJECT.x += 1;
-  //NEW_OBJECT.y += 1;
+
+  if (NEW_OBJECT.x > GAME.canvas.width-25) {
+    NEW_OBJECT.i *= -1;
+  } else if (NEW_OBJECT.x < 0) {
+    NEW_OBJECT.i *=-1;
+  } else if (NEW_OBJECT.y > GAME.canvas.height-25) {
+    NEW_OBJECT.j *= -1;
+  } else if (NEW_OBJECT.y < 0) {
+    NEW_OBJECT.j *= -1;
+  }
+  NEW_OBJECT.x += (1  *NEW_OBJECT.i);
+  NEW_OBJECT.y += (1*NEW_OBJECT.j);
 }
 
 function runGame() {
