@@ -65,6 +65,9 @@ function HandleNewObjectMovement() {
   }
   NEW_OBJECT.x += (1  *NEW_OBJECT.i);
   NEW_OBJECT.y += (1*NEW_OBJECT.j);
+  if (NEW_OBJECT.i > 600){
+    GAME.started = false;
+  }
 
 //if the spaceship is touching the object, increase the score
   if (NEW_OBJECT.x <= SPACE_SHIP.x && NEW_OBJECT.x + 25 >= SPACE_SHIP.x && NEW_OBJECT.y <= SPACE_SHIP.y && NEW_OBJECT.y + 25>= SPACE_SHIP.y){
@@ -91,7 +94,7 @@ function runGame() {
 
   } else {
     context.font = "30px Arial";
-    context.fillText("Game Over      Level " + GAME.level, 135, 200);
+    context.fillText("Game Over", 220, 150);
   }
   window.requestAnimationFrame(runGame);
 }
