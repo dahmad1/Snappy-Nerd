@@ -39,13 +39,48 @@ function handleShipAnimation() {
     SPACE_SHIP.y = 300;
   }
 }
-
+var height;
 function RenderNewObject(context) {
-  context.fillRect(NEW_OBJECT.x, NEW_OBJECT.y, 25, 25);
+  context.fillRect(NEW_OBJECT.x, NEW_OBJECT.y, 100, 150);
 }
 
 function HandleNewObjectMovement() {
 
+    NEW_OBJECT.x -= 3;
+
+    if (NEW_OBJECT.x > GAME.canvas.width) {
+      NEW_OBJECT.x = 0;
+    } else if (NEW_OBJECT.x < 0) {
+      NEW_OBJECT.x = 600;
+    } else if (NEW_OBJECT.y > GAME.canvas.height) {
+      NEW_OBJECT.y = 0;
+    } else if (NEW_OBJECT.y < 0) {
+      NEW_OBJECT.y = 300;
+    }
+}
+
+function RenderNewObjectTwo(context) {
+  context.fillRect(NEW_OBJECT_TWO.x, NEW_OBJECT_TWO.y, 100, 150);
+}
+
+function HandleNewObjectTwoMovement() {
+
+    NEW_OBJECT_TWO.x -= 3;
+    if (NEW_OBJECT_TWO.x > GAME.canvas.width) {
+      NEW_OBJECT_TWO.x = 0;
+    } else if (NEW_OBJECT_TWO.x < 0) {
+      NEW_OBJECT_TWO.x = 600;
+    } else if (NEW_OBJECT_TWO.y > GAME.canvas.height) {
+      NEW_OBJECT_TWO.y = 0;
+    } else if (NEW_OBJECT_TWO.y < 0) {
+      NEW_OBJECT_TWO.y = 300;
+    }
+  }
+
+
+
+
+/*
   if (NEW_OBJECT.x > GAME.canvas.width-25) {
     NEW_OBJECT.i *= -1.05;
     NEW_OBJECT.j *= 1.05;
@@ -68,35 +103,42 @@ function HandleNewObjectMovement() {
   if (NEW_OBJECT.i > 600){
     GAME.started = false;
   }
-
+*/
 //if the spaceship is touching the object, increase the score
   if (NEW_OBJECT.x <= SPACE_SHIP.x && NEW_OBJECT.x + 25 >= SPACE_SHIP.x && NEW_OBJECT.y <= SPACE_SHIP.y && NEW_OBJECT.y + 25>= SPACE_SHIP.y){
     highscore += (1* scoreMult);
   }
-}
 
-function runGame() {
-  var canvas = document.getElementById('mainCanvas');
-  var context = canvas.getContext('2d');
 
-  if (GAME.started) {
+  function runGame() {
+    var canvas = document.getElementById('mainCanvas');
+    var context = canvas.getContext('2d');
+    if (GAME.started) {
 
-    // 1 - Reposition the objects
-    handleShipAnimation();
-    HandleNewObjectMovement();
+      // 1 - Reposition the objects
+      //handleShipAnimation();
+      HandleNewObjectMovement();
+      HandleNewObjectTwoMovement();
 
-    // 2 - Clear the CANVAS
-    context.clearRect(0, 0, 600, 300);
-    context.fillText("Score: " + highscore, 530, 20)
-    // 3 - Draw new items
-    RenderSpaceship(context);
-    RenderNewObject(context);
+      // 2 - Clear the CANVAS
+      context.clearRect(0, 0, 600, 300);
 
-  } else {
-    context.font = "30px Arial";
-    context.fillText("Game Over", 220, 150);
+      // 3 - Draw new items
+      //RenderSpaceship(context);
+      RenderNewObject(context);
+
+      RenderNewObjectTwo(context);
+
+
+
+    } else {
+      context.font = "30px Arial";
+      context.fillText("Game Over      Level " + GAME.level, 135, 200);
+    }
+    window.requestAnimationFrame(runGame);
   }
-  window.requestAnimationFrame(runGame);
-}
 
-window.requestAnimationFrame(runGame);
+  window.requestAnimationFrame(runGame);
+
+
+//window.requestAnimationFrame(runGame);

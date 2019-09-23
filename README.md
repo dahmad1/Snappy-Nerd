@@ -2,4 +2,4 @@ Hey, sorry you've been handed this game! Currently, its an entirely different ga
 
 Anyway, on to Snappy Nerd. It should be like flappy bird, except the bird is Spiderman carrying the infinity gauntlet and the pipes are Thanos trying to take it.
 
-As for an extra feature, maybe make the pipes get a bit bigger as they approach to simulate Thanos trying to reach for the gauntlet lol. idk have fun, i was just thinking it might be cool to have the pipes changing size. 
+As for an extra feature, maybe make the pipes get a bit bigger as they approach to simulate Thanos trying to reach for the gauntlet lol. idk have fun, i was just thinking it might be cool to have the pipes changing size.
