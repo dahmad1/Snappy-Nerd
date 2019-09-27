@@ -42,6 +42,7 @@ function handleShipAnimation() {
 var height;
 function RenderNewObject(context) {
   context.fillRect(NEW_OBJECT.x, NEW_OBJECT.y, 100, 150);
+  context.fillRect (MOVEMENT_PIECE.x, MOVEMENT_PIECE.y, 50, 50);
 }
 
 function HandleNewObjectMovement() {
@@ -57,12 +58,23 @@ function HandleNewObjectMovement() {
     } else if (NEW_OBJECT.y < 0) {
       NEW_OBJECT.y = 300;
     }
+    document.body.onkeyup = function(e){
+    if(e.keyCode == 38){
+      MOVEMENT_PIECE.y-=10;
+    }
+  }
+  document.body.onkeydown = function(e){
+    if(e.keyCode == 40){
+      MOVEMENT_PIECE.y+=10;
+    }
+  }
 }
 
 function RenderNewObjectTwo(context) {
   context.fillRect(NEW_OBJECT_TWO.x, NEW_OBJECT_TWO.y, 100, 150);
 }
-
+function IfContact (context){
+}
 function HandleNewObjectTwoMovement() {
 
     NEW_OBJECT_TWO.x -= 3;
@@ -110,6 +122,7 @@ function HandleNewObjectTwoMovement() {
   }
 
 
+
   function runGame() {
     var canvas = document.getElementById('mainCanvas');
     var context = canvas.getContext('2d');
@@ -128,8 +141,6 @@ function HandleNewObjectTwoMovement() {
       RenderNewObject(context);
 
       RenderNewObjectTwo(context);
-
-
 
     } else {
       context.font = "30px Arial";
