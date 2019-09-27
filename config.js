@@ -29,3 +29,8 @@ var NEW_OBJECT_TWO = {
   i : 1,
   j : 1
 };
+
+var MOVEMENT_PIECE = {
+  x : 200,
+  y : 150
+}
